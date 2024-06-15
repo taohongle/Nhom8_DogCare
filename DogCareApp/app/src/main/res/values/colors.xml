@@ -2,4 +2,35 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="gray">#F1F1F1</color>
+    <color name="blue">#17629C</color>
+    <color name="teal_200">#D6D2D1</color>
+    <color name="blue_200">#0D6EFD</color>
+    <color name="colorGreenDarker">#002626</color>
+    <color name="colorAccent">#95C623</color>
+    <color name="colorAccentAlpha_10">#1A95C623</color>
+    <color name="colorGreenDarkerAlpha_10">#1A002626</color>
+    <color name="transparent">#00FFFFFF</color>
+
+
+    <color name="dialog_bg">#fff</color>
+    <color name="main_color">#F75564</color>
+    <color name="background_view_color">#F7F7F9</color>
+    <color name="black_1">#2B2B2B</color>
+    <color name="grey_1">#707B81</color>
+    <color name="grey_2">#6A6A6A</color>
+    <color name="grey_3">#7D848D</color>
+    <color name="heart_active">#F87265</color>
+    <color name="button_color">#ECECEC</color>
+    <color name="indicator_deactive">#FFB21A</color>
+    <color name="delete_color">#FF1900</color>
+    <color name="primary">#1483C2</color>
+
+    <color name="color_background_box">#F5F5F5</color>
+    <color name="color_background_box_stroke">#DEDEDE</color>
+    <color name="color_background_box_stroke_active">#A5A5A5</color>
+    <color name="drawer_color_background">#1483C2</color>
+    <color name="icon_bottom">#4D222222</color>
+    <color name="edit_message">#66E4E4E4</color>
 </resources>

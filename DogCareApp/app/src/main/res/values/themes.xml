@@ -1,9 +1,134 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.DogCareApp" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.DogCareApp" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/drawer_color_background</item>
+        <item name="colorPrimaryVariant">@color/drawer_color_background</item>
+
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+        <item name="android:animation">@anim/anim_view_show</item>
+        <item name="colorOnPrimary">@color/transparent</item>
+        <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
+
+        <item name="android:statusBarColor">@color/main_color</item>
     </style>
 
     <style name="Theme.DogCareApp" parent="Base.Theme.DogCareApp" />
+
+
+    <style name="DialogTheme_transparent" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--You can set other style items also, such as animations and etc-->
+    </style>
+
+
+
+    <style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/anim_in_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/anim_out_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/anim_in_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/anim_out_right</item>
+    </style>
+
+
+    <style name="ButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/button_height</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:background">@drawable/background_button_accent</item>
+        <item name="fontFamily">@font/raleway_semibold</item>
+        <item name="android:textSize">@dimen/text_size_12</item>
+        <item name="android:textColor">@drawable/button_text_color_selector</item>
+    </style>
+
+    <style name="ButtonStyleMain" parent="Widget.AppCompat.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:background">@drawable/background_button_main</item>
+        <item name="fontFamily">@font/raleway_semibold</item>
+        <!--        <item name="android:paddingBottom">@dimen/spacing_5</item>-->
+        <item name="android:layout_marginStart">@dimen/spacing_13</item>
+        <item name="android:layout_marginEnd">@dimen/spacing_13</item>
+        <item name="android:textSize">@dimen/text_size_12</item>
+        <item name="android:textColor">@drawable/button_text_color_selector_main</item>
+    </style>
+
+    <style name="TextLayoutBasicStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/inter</item>
+        <item name="android:textSize">@dimen/text_size_12</item>
+        <item name="android:textColor">@color/black_1</item>
+    </style>
+
+    <style name="TextTitleList" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/raleway_semibold</item>
+        <item name="android:textSize">@dimen/text_size_13</item>
+        <item name="android:textColor">@color/black_1</item>
+    </style>
+
+    <style name="TextLayoutHeadingStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAlignment">center</item>
+        <item name="fontFamily">@font/raleway_bold</item>
+        <item name="android:layout_marginStart">@dimen/spacing_20</item>
+        <item name="android:layout_marginEnd">@dimen/spacing_20</item>
+        <item name="android:textSize">@dimen/text_size_25</item>
+        <item name="android:textColor">@color/black_1</item>
+    </style>
+
+    <style name="TextLayoutDescriptionStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAlignment">center</item>
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">@dimen/text_size_13</item>
+        <item name="android:layout_marginStart">@dimen/spacing_20</item>
+        <item name="android:layout_marginEnd">@dimen/spacing_20</item>
+        <item name="android:textColor">@color/grey_1</item>
+    </style>
+
+    <style name="TextLayoutDescriptionStyleMedium" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAlignment">center</item>
+        <item name="fontFamily">@font/poppin_medium</item>
+        <item name="android:textSize">@dimen/text_size_13</item>
+        <item name="android:layout_marginStart">@dimen/spacing_20</item>
+        <item name="android:layout_marginEnd">@dimen/spacing_20</item>
+        <item name="android:textColor">@color/grey_1</item>
+    </style>
+
+    <style name="EditTextBaseStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/poppin_medium</item>
+        <item name="android:textSize">@dimen/text_size_12</item>
+        <item name="android:layout_marginStart">@dimen/spacing_13</item>
+        <item name="android:layout_marginEnd">@dimen/spacing_13</item>
+        <item name="background">@drawable/background_base_edittext</item>
+        <item name="android:padding">@dimen/spacing_10</item>
+        <item name="hintTextColor">@color/grey_2</item>
+        <item name="android:textColor">@color/black_1</item>
+    </style>
+
+    <style name="TextInputEditTextBaseStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/poppin_medium</item>
+        <item name="android:textSize">@dimen/text_size_12</item>
+        <item name="android:layout_marginStart">@dimen/spacing_13</item>
+        <item name="android:layout_marginEnd">@dimen/spacing_13</item>
+        <item name="background">@drawable/background_base_edittext</item>
+        <item name="android:padding">@dimen/spacing_10</item>
+        <item name="hintTextColor">@color/grey_2</item>
+        <item name="android:textColor">@color/black_1</item>
+    </style>
+
+
 </resources>

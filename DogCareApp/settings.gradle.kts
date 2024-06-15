@@ -7,6 +7,8 @@ pluginManagement {
                 includeGroupByRegex("androidx.*")
             }
         }
+        jcenter() // Warning: this repository is going to shut down soon
+        maven { url = uri( "https://www.jitpack.io")}
         mavenCentral()
         gradlePluginPortal()
     }
@@ -16,6 +18,8 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        jcenter() /* Warning: this repository is going to shut down soon */
+        maven { url = uri( "https://www.jitpack.io")}
     }
 }
 
