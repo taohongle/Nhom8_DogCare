@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "445559090963",
+    "project_id": "dogcare-6f2a2",
+    "storage_bucket": "dogcare-6f2a2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:445559090963:android:32c901e3f6356a35bdb4e6",
+        "android_client_info": {
+          "package_name": "tlu.cse.android.ht63.AppDog"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQWvUneseXIZ61DHGvQ3NSD_vRwpG9Afc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:445559090963:android:6c2e88cfd9992653bdb4e6",
+        "android_client_info": {
+          "package_name": "tlu.cse.android.ht63.dogcareapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQWvUneseXIZ61DHGvQ3NSD_vRwpG9Afc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
