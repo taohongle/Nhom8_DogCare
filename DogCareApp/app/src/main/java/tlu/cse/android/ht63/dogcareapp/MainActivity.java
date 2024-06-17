@@ -46,42 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private TabAdapter adapterRv;
-//    private void initBottomBar() {
-//        binding..setLayoutManager(new GridLayoutManager(MainActivity.this, 4));
-//        adapterRv = new TabAdapter();
-//        binding.recyclerview.setAdapter(adapterRv);
-//        binding.recyclerview.setHasFixedSize(true);
-//        adapterRv.addItem(list());
-//        adapterRv.updateView(0);
-//
-//        adapterRv.setTabOnListener(new TabOnListener() {
-//            @Override
-//            public void onItemClick(int position, TabItem tabItem) {
-//                switch (position) {
-//                    case 0:
-//                        binding.viewPager.setCurrentItem(0, false);
-//                        break;
-//                    case 1:
-//                        binding.viewPager.setCurrentItem(1, false);
-//                        break;
-//                    case 2:
-//                        binding.viewPager.setCurrentItem(2, false);
-//                        break;
-//                    case 3:
-//                        binding.viewPager.setCurrentItem(3, false);
-//                        break;
-//                }
-//                adapterRv.updateView(position);
-  //          }
-//        });
-//        binding.viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-//            @Override
-//            public void onPageSelected(int position) {
-//                //tabActiveViewModel.getTabSelected().setValue(position);
-//            }
-//        });
-//    }
+
+
     private List<TabItem> list(){
         List<TabItem> list = new ArrayList<>();
         list.add(new TabItem(getString(R.string.home), R.drawable.home, 0));
