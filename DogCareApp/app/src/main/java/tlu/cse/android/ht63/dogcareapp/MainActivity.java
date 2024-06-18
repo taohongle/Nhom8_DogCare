@@ -2,6 +2,8 @@ package tlu.cse.android.ht63.dogcareapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 
@@ -27,6 +29,7 @@ import tlu.cse.android.ht63.dogcareapp.utils.TabOnListener;
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private ActivityMainBinding binding;
+    private Handler mHandle = new Handler(Looper.getMainLooper());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,13 +47,31 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-        }
+        }else {
+            UserInfoManager.getInstance().loadInfoFormFirebase(new UserInfoManager.OnLoadInfoListener() {
+                @Override
+                public void onSuccess() {
 
-    }
-    private void hideSplash() {
-        Log.d("__haha", "hideSplash: haha");
-        binding.splashLayout.setVisibility(View.GONE);
-        binding.containerLayout.setVisibility(View.VISIBLE);
+                    mHandle.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            binding.splashLayout.setVisibility(View.GONE);
+                            binding.containerLayout.setVisibility(View.VISIBLE);
+                        }
+                    },1500);
+                }
+                @Override
+                public void onFailure(Exception e) {
+                    Log.d("__haha", "onFailure: onFailure");
+                }
+
+                @Override
+                public void onAuthNull() {
+                    Log.d("__haha", "onAuthNull: onAuthNull__");
+                }
+            });
+
+        }
     }
 
 
