@@ -14,12 +14,12 @@
         android:orientation="vertical"
         android:paddingTop="30dp"
         app:layout_constraintTop_toTopOf="parent">
-<!--        <ImageView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:layout_margin="15dp"-->
-<!--            android:src="@drawable/dog" />-->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="15dp"
+            android:src="@drawable/dog" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
