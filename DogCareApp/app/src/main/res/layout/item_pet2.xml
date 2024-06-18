@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="10dp"
+    android:backgroundTint="#24F75564"
+    app:strokeColor="@color/main_color"
+    app:strokeWidth="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:padding="10dp"
+            android:src="@drawable/bell" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvPetName"
+                style="@style/TextLayoutBasicStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tên: mật"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/tvPetType"
+                style="@style/TextLayoutBasicStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Loại: Alaska"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/tvPetGender"
+                style="@style/TextLayoutBasicStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Giới tính: Đực"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
