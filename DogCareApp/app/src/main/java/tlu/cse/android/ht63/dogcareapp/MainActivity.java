@@ -2,6 +2,8 @@ package tlu.cse.android.ht63.dogcareapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -44,6 +46,11 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
+    }
+    private void hideSplash() {
+        Log.d("__haha", "hideSplash: haha");
+        binding.splashLayout.setVisibility(View.GONE);
+        binding.containerLayout.setVisibility(View.VISIBLE);
     }
 
 
