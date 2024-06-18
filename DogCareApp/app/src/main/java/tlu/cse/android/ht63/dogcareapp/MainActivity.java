@@ -20,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.util.ArrayList;
 import java.util.List;
 
+import tlu.cse.android.ht63.dogcareapp.adapter.PagerAdapter;
 import tlu.cse.android.ht63.dogcareapp.adapter.TabAdapter;
 import tlu.cse.android.ht63.dogcareapp.databinding.ActivityMainBinding;
 import tlu.cse.android.ht63.dogcareapp.model.TabItem;
@@ -29,9 +30,10 @@ import tlu.cse.android.ht63.dogcareapp.utils.TabOnListener;
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private ActivityMainBinding binding;
-    private Handler mHandle = new Handler(Looper.getMainLooper());
+    private final Handler mHandle = new Handler(Looper.getMainLooper());
 
     private TabAdapter adapterRv;
+    private PagerAdapter pagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,18 +55,11 @@ public class MainActivity extends AppCompatActivity {
             UserInfoManager.getInstance().loadInfoFormFirebase(new UserInfoManager.OnLoadInfoListener() {
                 @Override
                 public void onSuccess() {
-
-                    mHandle.postDelayed(new Runnable() {
-
-                        @Override
-                        public void run() {
-                            binding.splashLayout.setVisibility(View.GONE);
-                            binding.containerLayout.setVisibility(View.VISIBLE);
+                    mHandle.postDelayed(() -> hideSplash(), 1500);
+                    initViewPager();
+                    initBottomBar();
 
 
-                            initBottomBar();
-                        }
-                    },1500);
                 }
                 @Override
                 public void onFailure(Exception e) {
@@ -78,6 +73,20 @@ public class MainActivity extends AppCompatActivity {
             });
 
         }
+    }
+
+    private void initViewPager() {
+        pagerAdapter = new PagerAdapter(this);
+        binding.viewPager.setOffscreenPageLimit(4);
+        binding.viewPager.setUserInputEnabled(false);
+        binding.viewPager.setSaveEnabled(false);
+        binding.viewPager.setAdapter(pagerAdapter);
+    }
+
+
+    private void hideSplash() {
+        binding.splashLayout.setVisibility(View.GONE);
+        binding.containerLayout.setVisibility(View.VISIBLE);
     }
 
     private void initBottomBar() {
