@@ -1,10 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.AddStoriesActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_of_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="@dimen/button_size_35"
+            android:layout_height="@dimen/button_size_35"
+            android:layout_marginStart="@dimen/spacing_13"
+            android:src="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:textStyle="bold"
+            android:id="@+id/tv_title1"
+            style="@style/TextLayoutBasicStyle"
+            android:layout_width="@dimen/_170sdp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Khoảnh khắc"
+            android:textAlignment="center"
+            android:textColor="@color/main_color"
+            android:textSize="@dimen/text_size_16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ic_control"
+            android:layout_width="@dimen/button_size_35"
+            android:layout_height="@dimen/button_size_35"
+            android:layout_marginEnd="@dimen/spacing_13"
+            android:src="@drawable/ic_back"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_end"
+            style="@style/TextLayoutHeadingStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginEnd="@dimen/spacing_13"
+            android:gravity="center"
+            android:text="@string/text_done"
+            android:textAlignment="center"
+            android:textColor="@color/main_color"
+            android:textSize="@dimen/spacing_13"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <EditText
+        android:id="@+id/edtTitle"
+        style="@style/TextLayoutBasicStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="8dp"
+        android:background="@drawable/bg_base_edittext"
+        android:gravity="start"
+        android:hint="Thêm tiêu đề"
+        android:minLines="4"
+        android:padding="10dp" />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/bg_default_image" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSave"
+        style="@style/TextLayoutBasicStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="Lưu"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/main_color" />
+
+</LinearLayout>

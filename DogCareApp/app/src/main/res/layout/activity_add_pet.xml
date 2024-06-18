@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -7,4 +7,269 @@
     android:layout_height="match_parent"
     tools:context=".ui.AddPetActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_of_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/img_back"
+                android:layout_width="@dimen/button_size_35"
+                android:layout_height="@dimen/button_size_35"
+                android:layout_marginStart="@dimen/spacing_13"
+                android:src="@drawable/ic_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/tv_title1"
+                style="@style/TextLayoutBasicStyle"
+                android:layout_width="@dimen/_170sdp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Thêm thú cưng"
+                android:textAlignment="center"
+                android:textColor="@color/main_color"
+                android:textSize="@dimen/text_size_16"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ic_control"
+                android:layout_width="@dimen/button_size_35"
+                android:layout_height="@dimen/button_size_35"
+                android:layout_marginEnd="@dimen/spacing_13"
+                android:src="@drawable/ic_back"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_end"
+                style="@style/TextLayoutHeadingStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginEnd="@dimen/spacing_13"
+                android:gravity="center"
+                android:text="@string/text_done"
+                android:textAlignment="center"
+                android:textColor="@color/main_color"
+                android:textSize="@dimen/spacing_13"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <FrameLayout
+            android:id="@+id/layout_of_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_of_header">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:background="@drawable/bg_default_circle_avatar"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:background="@drawable/bg_circle_white"
+                android:padding="5dp"
+                android:src="@drawable/camera"
+                app:tint="#4E4E4E" />
+
+        </FrameLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_of_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/layout_of_image">
+
+            <TextView
+                android:id="@+id/tv_title3"
+                style="@style/TextLayoutBasicStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_13"
+                android:layout_marginTop="@dimen/spacing_13"
+                android:text="Tên thu cưng"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edt_name"
+                style="@style/EditTextBaseStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_10"
+                android:background="@drawable/background_base_edittext"
+                android:hint="xxxxxxxxxxx"
+                app:layout_constraintTop_toBottomOf="@id/tv_title3"
+
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_of_active"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/layout_of_name">
+
+            <TextView
+                android:id="@+id/tv_title_gender"
+                style="@style/TextLayoutBasicStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_13"
+                android:layout_marginTop="@dimen/spacing_13"
+                android:text="Giới tính"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvGender"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:padding="10dp"
+                style="@style/TextLayoutBasicStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_10"
+                android:background="@drawable/bg_base_text"
+                android:text="Con Đực"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_gender"
+
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_of_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/layout_of_active">
+
+            <TextView
+                android:id="@+id/tv_title_type"
+                style="@style/TextLayoutBasicStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_13"
+                android:layout_marginTop="@dimen/spacing_13"
+                android:text="Giống"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edt_type"
+                style="@style/EditTextBaseStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_10"
+                android:background="@drawable/background_base_edittext"
+                android:hint="xxxxxxxxxxx"
+
+                app:layout_constraintTop_toBottomOf="@id/tv_title_type"
+
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_of_habit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/layout_of_type">
+
+            <TextView
+                android:id="@+id/tv_title_age"
+                style="@style/TextLayoutBasicStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_13"
+                android:layout_marginTop="@dimen/spacing_13"
+                android:text="Ngày sinh"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvAge"
+                style="@style/TextLayoutBasicStyle"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_10"
+                android:background="@drawable/bg_base_text"
+                android:text="20/03/2000"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_age"
+
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_of_kg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/layout_of_habit">
+
+            <TextView
+                android:id="@+id/tv_title_kg"
+                style="@style/TextLayoutBasicStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_13"
+                android:layout_marginTop="@dimen/spacing_13"
+                android:text="Cân nặng"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edtKg"
+                style="@style/EditTextBaseStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_10"
+                android:background="@drawable/background_base_edittext"
+                android:hint="xxxxxxxxxxx"
+                android:inputType="numberDecimal"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_kg"
+
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Lưu"
+            android:textColor="@color/white"
+            app:backgroundTint="@color/main_color"
+            app:layout_constraintTop_toBottomOf="@+id/layout_of_kg" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.core.widget.NestedScrollView>
