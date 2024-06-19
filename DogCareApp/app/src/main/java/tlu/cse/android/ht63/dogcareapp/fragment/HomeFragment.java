@@ -16,8 +16,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import tlu.cse.android.ht63.dogcareapp.R;
+import tlu.cse.android.ht63.dogcareapp.UserInfoManager;
 import tlu.cse.android.ht63.dogcareapp.adapter.BannerAdapter;
 import tlu.cse.android.ht63.dogcareapp.databinding.FragmentHomeBinding;
+import tlu.cse.android.ht63.dogcareapp.model.UserInfo;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +28,9 @@ import tlu.cse.android.ht63.dogcareapp.databinding.FragmentHomeBinding;
  */
 public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
+
+    private UserInfo userInfo;
+
 
     public static Fragment newInstance() {
         return new HomeFragment();
@@ -42,8 +47,10 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+      
+        userInfo = UserInfoManager.getInstance().getUserInfo();
 
-        // ...
+        binding.gmail.setText(userInfo.getEmail());
 
         initBanner();
     }
@@ -85,6 +92,5 @@ public class HomeFragment extends Fragment {
     public void onDestroy() {
         handler.removeCallbacks(runnable);
         super.onDestroy();
-
     }
 }
