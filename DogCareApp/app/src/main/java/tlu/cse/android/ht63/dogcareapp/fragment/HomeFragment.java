@@ -15,12 +15,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+
+import java.util.Calendar;
+
 import tlu.cse.android.ht63.dogcareapp.R;
 import tlu.cse.android.ht63.dogcareapp.UserInfoManager;
 import tlu.cse.android.ht63.dogcareapp.adapter.BannerAdapter;
 import tlu.cse.android.ht63.dogcareapp.databinding.FragmentHomeBinding;
 import tlu.cse.android.ht63.dogcareapp.model.UserInfo;
 import tlu.cse.android.ht63.dogcareapp.ui.AddPetActivity;
+import tlu.cse.android.ht63.dogcareapp.utils.Pref;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,6 +37,7 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
 
     private UserInfo userInfo;
+
 
 
     public static Fragment newInstance() {
@@ -50,9 +57,6 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
       
         userInfo = UserInfoManager.getInstance().getUserInfo();
-
-        binding.gmail.setText(userInfo.getEmail());
-
         initBanner();
 
         binding.addPet.setOnClickListener(new View.OnClickListener() {
