@@ -37,7 +37,7 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
 
     private UserInfo userInfo;
-
+    private Calendar calendar = Calendar.getInstance();
 
 
     public static Fragment newInstance() {
@@ -58,6 +58,7 @@ public class HomeFragment extends Fragment {
       
         userInfo = UserInfoManager.getInstance().getUserInfo();
         initBanner();
+        loadUI();
 
         binding.addPet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +66,18 @@ public class HomeFragment extends Fragment {
                 startActivity(new Intent(requireActivity(),AddPetActivity.class));
             }
         });
+    }
+
+    private void loadUI() {
+        binding.name.setText(userInfo.getName());
+        Glide.with(this)
+                .load(userInfo.getImage())
+                .error(R.drawable.ic_launcher_foreground)
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .circleCrop()
+                .into(binding.avatar);
+
+        binding.tvFilter.setText(Pref.convertDate(calendar.getTimeInMillis()));
     }
 
     private void initBanner() {

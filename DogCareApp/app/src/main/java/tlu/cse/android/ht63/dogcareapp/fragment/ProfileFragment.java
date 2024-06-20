@@ -64,7 +64,7 @@ public class ProfileFragment extends Fragment {
     }
 
     private void loadUI() {
-        binding.gmail.setText(userInfo.getEmail());
+        binding.name.setText(userInfo.getName());
         Glide.with(requireActivity())
                 .load(userInfo.getImage())
                 .error(R.drawable.ic_launcher_foreground)
