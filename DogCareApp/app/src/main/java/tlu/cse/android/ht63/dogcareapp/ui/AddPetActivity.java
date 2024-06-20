@@ -1,7 +1,9 @@
 package tlu.cse.android.ht63.dogcareapp.ui;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -11,14 +13,29 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.gson.Gson;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -28,10 +45,12 @@ import tlu.cse.android.ht63.dogcareapp.R;
 import tlu.cse.android.ht63.dogcareapp.databinding.ActivityAddPetBinding;
 import tlu.cse.android.ht63.dogcareapp.model.Pet;
 
-public class AddPetActivity extends AppCompatActivity {
+public class AddPetActivity extends BaseActivity {
     private ActivityAddPetBinding binding;
     private Pet pet = new Pet();
     private Calendar cal;
+
+    Gson gson;
     private DateFormat dateFormat = DateFormat.getDateInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,45 +62,21 @@ public class AddPetActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
+        gson = new Gson();
 
         cal = Calendar.getInstance();
 
 
+        binding.imgBack.setOnClickListener(v -> finish());
 
         binding.tvGender.setOnClickListener(v -> showBottomSheetGenderChooser());
 
-        binding.tvAge.setText(dateFormat.format(cal.getTime()));
+
 
         binding.tvAge.setOnClickListener(v -> showDatePicker());
-
-        binding.btnSave.setOnClickListener(v -> checkData());
-
-        binding.imgBack.setOnClickListener(v -> finish());
     }
 
 
-
-    private void checkData() {
-        String name = Objects.requireNonNull(binding.edtName.getText()).toString().trim();
-        String gender = Objects.requireNonNull(binding.tvGender.getText()).toString().trim();
-        String type = Objects.requireNonNull(binding.edtType.getText()).toString().trim();
-        String age = String.valueOf(cal.getTimeInMillis());
-        String kg = Objects.requireNonNull(binding.edtKg.getText()).toString().trim();
-        if (pet == null) {
-            if (name.isEmpty() || gender.isEmpty() || type.isEmpty() || age.isEmpty() || kg.isEmpty()) {
-                Toast.makeText(this, "Vui lòng hãy điền đủ thông tin", Toast.LENGTH_SHORT).show();
-            } else {
-
-            }
-        } else {
-            if (name.isEmpty() || gender.isEmpty() || type.isEmpty() || age.isEmpty() || kg.isEmpty()) {
-                Toast.makeText(this, "Vui lòng hãy điền đủ thông tin", Toast.LENGTH_SHORT).show();
-            } else {
-
-            }
-        }
-    }
 
     private void showDatePicker() {
         final DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
@@ -102,6 +97,8 @@ public class AddPetActivity extends AppCompatActivity {
                 cal.get(Calendar.DAY_OF_MONTH)
         ).show());
     }
+
+
 
     private void showBottomSheetGenderChooser() {
         BottomSheetDialog dialog = new BottomSheetDialog(this);

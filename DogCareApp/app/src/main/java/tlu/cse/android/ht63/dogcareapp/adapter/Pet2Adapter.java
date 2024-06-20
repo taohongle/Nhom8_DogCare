@@ -50,7 +50,12 @@ public class Pet2Adapter extends RecyclerView.Adapter<Pet2Adapter.VH> {
                 .circleCrop()
                 .into(holder.image);
 
+        holder.itemView.setOnClickListener(v -> petListener.onClick(holder.getAdapterPosition(), pet));
 
+        holder.itemView.setOnLongClickListener(v -> {
+            petListener.onLongClick(holder.getAdapterPosition(), pet);
+            return true;
+        });
     }
 
     @SuppressLint("NotifyDataSetChanged")

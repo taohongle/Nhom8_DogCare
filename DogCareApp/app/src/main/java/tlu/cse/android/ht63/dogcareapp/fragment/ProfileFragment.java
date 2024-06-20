@@ -13,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -48,6 +50,7 @@ public class ProfileFragment extends Fragment {
 
         mAuth = FirebaseAuth.getInstance();
         userInfo = UserInfoManager.getInstance().getUserInfo();
+        loadUI();
         binding.btnEdit.setOnClickListener(v -> startActivity(new Intent(requireActivity(), ProfileActivity.class)));
         binding.tvLogout.setOnClickListener(v -> showLogoutAccountConfirmationDialog());
         binding.tvDeleteUser.setOnClickListener(v -> showDeleteAccountConfirmationDialog());
@@ -58,7 +61,21 @@ public class ProfileFragment extends Fragment {
                 Toast.makeText(requireActivity(), "Phiên bản hiện tại là 1.0", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void loadUI() {
         binding.gmail.setText(userInfo.getEmail());
+        Glide.with(requireActivity())
+                .load(userInfo.getImage())
+                .error(R.drawable.ic_launcher_foreground)
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .circleCrop()
+                .into(binding.avatar);
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadUI();
     }
 
     private void showLogoutAccountConfirmationDialog() {
