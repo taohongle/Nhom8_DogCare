@@ -18,11 +18,16 @@ import java.util.List;
 
 import tlu.cse.android.ht63.dogcareapp.R;
 import tlu.cse.android.ht63.dogcareapp.model.Pet;
-
+import tlu.cse.android.ht63.dogcareapp.utils.PetListener;
 
 public class Pet2Adapter extends RecyclerView.Adapter<Pet2Adapter.VH> {
 
     private List<Pet> petList = new ArrayList<>();
+    private PetListener petListener;
+
+    public void setPetListener(PetListener petListener) {
+        this.petListener = petListener;
+    }
 
     @NonNull
     @Override
@@ -44,19 +49,34 @@ public class Pet2Adapter extends RecyclerView.Adapter<Pet2Adapter.VH> {
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .circleCrop()
                 .into(holder.image);
+
+//        holder.itemView.setOnClickListener(v -> petListener.onClick(holder.getAdapterPosition(), pet));
+//
+//        holder.itemView.setOnLongClickListener(v -> {
+//            petListener.onLongClick(holder.getAdapterPosition(), pet);
+//            return true;
+//        });
     }
+
     @SuppressLint("NotifyDataSetChanged")
     public void setData(List<Pet> list) {
         this.petList = list;
         notifyDataSetChanged();
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    public void addData(List<Pet> list) {
+        int size = this.petList.size();
+        this.petList.addAll(list);
+        notifyItemRangeChanged(size, this.petList.size() - 1);
+    }
+
     @Override
     public int getItemCount() {
         return petList.size();
     }
-    static class VH extends RecyclerView.ViewHolder {
 
+    static class VH extends RecyclerView.ViewHolder {
         private TextView tvPetName;
         private TextView tvPetType;
         private TextView tvPetGender;
