@@ -155,6 +155,8 @@
                 android:layout_marginTop="@dimen/spacing_10"
                 android:background="@drawable/background_base_edittext"
                 android:hint="abc@gmail.com"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
                 app:layout_constraintTop_toBottomOf="@id/tv_title4" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
