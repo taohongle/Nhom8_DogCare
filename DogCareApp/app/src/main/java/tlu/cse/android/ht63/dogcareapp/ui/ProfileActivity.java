@@ -73,6 +73,7 @@ public class ProfileActivity extends BaseActivity {
                 .circleCrop()
                 .into(binding.image);
         binding.edtName.setText(userInfo.getName());
+        binding.edtEmail.setText(userInfo.getEmail());
         binding.tvAge.setText(Pref.convertDate(userInfo.getAge()));
         binding.tvGender.setText(userInfo.getGender());
         binding.edtAddress.setText(userInfo.getAddress());
@@ -86,7 +87,6 @@ public class ProfileActivity extends BaseActivity {
 
         binding.imgBack.setOnClickListener(v -> finish());
 
-        binding.imgBack.setOnClickListener(v -> finish());
     }
 
     @SuppressLint("SetTextI18n")

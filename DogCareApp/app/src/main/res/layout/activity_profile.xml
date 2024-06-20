@@ -100,6 +100,8 @@
 
         </FrameLayout>
 
+
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_of_name"
             android:layout_width="match_parent"
@@ -124,17 +126,44 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_10"
                 android:background="@drawable/background_base_edittext"
-                android:hint="Tao Hong Le"
-                app:layout_constraintTop_toBottomOf="@id/tv_title3"
-
-                />
+                android:hint="Nhập tên của bạn"
+                app:layout_constraintTop_toBottomOf="@id/tv_title3" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_of_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/layout_of_name">
+
+            <TextView
+                android:id="@+id/tv_title4"
+                style="@style/TextLayoutBasicStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_13"
+                android:layout_marginTop="@dimen/spacing_13"
+                android:text="Email của bạn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edt_email"
+                style="@style/EditTextBaseStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_10"
+                android:background="@drawable/background_base_edittext"
+                android:hint="abc@gmail.com"
+                app:layout_constraintTop_toBottomOf="@id/tv_title4" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_of_active"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/layout_of_name">
+            app:layout_constraintTop_toBottomOf="@+id/layout_of_email">
 
             <TextView
                 android:id="@+id/tv_title_gender"
@@ -159,7 +188,6 @@
                 android:background="@drawable/bg_base_text"
                 android:text="Nữ"
                 app:layout_constraintTop_toBottomOf="@id/tv_title_gender"
-
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
