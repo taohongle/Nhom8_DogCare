@@ -20,6 +20,7 @@ import tlu.cse.android.ht63.dogcareapp.UserInfoManager;
 import tlu.cse.android.ht63.dogcareapp.adapter.BannerAdapter;
 import tlu.cse.android.ht63.dogcareapp.databinding.FragmentHomeBinding;
 import tlu.cse.android.ht63.dogcareapp.model.UserInfo;
+import tlu.cse.android.ht63.dogcareapp.ui.AddPetActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -53,6 +54,13 @@ public class HomeFragment extends Fragment {
         binding.gmail.setText(userInfo.getEmail());
 
         initBanner();
+
+        binding.addPet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(requireActivity(),AddPetActivity.class));
+            }
+        });
     }
 
     private void initBanner() {
