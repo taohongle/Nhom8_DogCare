@@ -13,24 +13,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import tlu.cse.android.ht63.dogcareapp.R;
+import tlu.cse.android.ht63.dogcareapp.UserInfoManager;
 import tlu.cse.android.ht63.dogcareapp.databinding.FragmentProfileBinding;
 import tlu.cse.android.ht63.dogcareapp.databinding.FragmentStoriesBinding;
+import tlu.cse.android.ht63.dogcareapp.model.UserInfo;
 import tlu.cse.android.ht63.dogcareapp.ui.LoginActivity;
 import tlu.cse.android.ht63.dogcareapp.ui.ProfileActivity;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ProfileFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ProfileFragment extends Fragment {
 
     private FragmentProfileBinding binding;
     private FirebaseAuth mAuth;
+
+    private UserInfo userInfo;
 
     public static Fragment newInstance() {
         return new ProfileFragment();
@@ -48,6 +49,8 @@ public class ProfileFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         mAuth = FirebaseAuth.getInstance();
+        userInfo = UserInfoManager.getInstance().getUserInfo();
+        loadUI();
         binding.btnEdit.setOnClickListener(v -> startActivity(new Intent(requireActivity(), ProfileActivity.class)));
         binding.tvLogout.setOnClickListener(v -> showLogoutAccountConfirmationDialog());
         binding.tvDeleteUser.setOnClickListener(v -> showDeleteAccountConfirmationDialog());
@@ -60,25 +63,64 @@ public class ProfileFragment extends Fragment {
         });
     }
 
+    private void loadUI() {
+        binding.name.setText(userInfo.getName());
+        Glide.with(requireActivity())
+                .load(userInfo.getImage())
+                .error(R.drawable.ic_launcher_foreground)
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .circleCrop()
+                .into(binding.avatar);
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadUI();
+    }
+
     private void showLogoutAccountConfirmationDialog() {
 
         new AlertDialog.Builder(requireActivity())
                 .setTitle("Xác nhận đăng xuất")
-                .setMessage("Bạn có chắc chắn muốn đăng xuất tài khoản?.")
+                .setMessage("Đăng xuất khỏi tài khoản của bạn?")
                 .setPositiveButton("Có", (dialog, which) -> logout())
                 .setNegativeButton("Không", null)
                 .show();
     }
 
     private void logout(){
-
         mAuth.signOut();
+        Toast.makeText(requireContext(), "Đã đăng xuất tài khoản", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(requireActivity(), LoginActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 
     private void showDeleteAccountConfirmationDialog() {
+        new AlertDialog.Builder(requireActivity())
+                .setTitle("Xác nhận xóa tài khoản")
+                .setMessage("Bạn có chắc chắn muốn xóa tài khoản này không? Hành động này không thể hoàn tác.")
+                .setPositiveButton("Có", (dialog, which) -> deleteAccount())
+                .setNegativeButton("Không", null)
+                .show();
+    }
+
+    private void deleteAccount() {
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null) {
+            user.delete()
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(requireActivity(), "Tài khoản đã bị xóa", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(requireActivity(), LoginActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+
+                        } else {
+                            Toast.makeText(requireActivity(), "Lỗi: Không thể xóa tài khoản", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }
     }
 
 

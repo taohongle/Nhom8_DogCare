@@ -15,9 +15,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+
+import java.util.Calendar;
+
 import tlu.cse.android.ht63.dogcareapp.R;
+import tlu.cse.android.ht63.dogcareapp.UserInfoManager;
 import tlu.cse.android.ht63.dogcareapp.adapter.BannerAdapter;
 import tlu.cse.android.ht63.dogcareapp.databinding.FragmentHomeBinding;
+import tlu.cse.android.ht63.dogcareapp.model.UserInfo;
+import tlu.cse.android.ht63.dogcareapp.ui.AddPetActivity;
+import tlu.cse.android.ht63.dogcareapp.utils.Pref;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +35,10 @@ import tlu.cse.android.ht63.dogcareapp.databinding.FragmentHomeBinding;
  */
 public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
+
+    private UserInfo userInfo;
+    private Calendar calendar = Calendar.getInstance();
+
 
     public static Fragment newInstance() {
         return new HomeFragment();
@@ -42,8 +55,29 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        // ...
+      
+        userInfo = UserInfoManager.getInstance().getUserInfo();
         initBanner();
+        loadUI();
+
+        binding.addPet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(requireActivity(),AddPetActivity.class));
+            }
+        });
+    }
+
+    private void loadUI() {
+        binding.name.setText(userInfo.getName());
+        Glide.with(this)
+                .load(userInfo.getImage())
+                .error(R.drawable.ic_launcher_foreground)
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .circleCrop()
+                .into(binding.avatar);
+
+        binding.tvFilter.setText(Pref.convertDate(calendar.getTimeInMillis()));
     }
 
     private void initBanner() {
@@ -83,6 +117,5 @@ public class HomeFragment extends Fragment {
     public void onDestroy() {
         handler.removeCallbacks(runnable);
         super.onDestroy();
-
     }
 }
