@@ -154,6 +154,7 @@ public class ProfileActivity extends BaseActivity {
                     hideLoading();
                     if (task.isSuccessful()) {
                         UserInfoManager.getInstance().setUserInfo(userInfo);
+                        Toast.makeText(this, "Cập nhật thông tin cá nhân thành công", Toast.LENGTH_SHORT).show();
                         finish();
                     } else {
                         Toast.makeText(ProfileActivity.this, "Đã có lỗi xảy ra", Toast.LENGTH_SHORT).show();

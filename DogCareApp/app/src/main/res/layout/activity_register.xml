@@ -130,7 +130,7 @@
                     android:id="@+id/tv_title"
                     android:layout_marginStart="@dimen/spacing_13"
                     android:layout_marginTop="@dimen/spacing_13"
-                    android:text="Email Address"
+                    android:text="Email của bạn"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
