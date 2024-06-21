@@ -114,7 +114,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_13"
                 android:layout_marginTop="@dimen/spacing_13"
-                android:text="Tên thu cưng"
+                android:text="Tên thú cưng"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

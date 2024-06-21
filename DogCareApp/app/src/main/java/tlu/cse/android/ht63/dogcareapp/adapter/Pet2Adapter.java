@@ -40,8 +40,8 @@ public class Pet2Adapter extends RecyclerView.Adapter<Pet2Adapter.VH> {
     public void onBindViewHolder(@NonNull Pet2Adapter.VH holder, int position) {
 
         Pet pet = petList.get(holder.getAdapterPosition());
-        holder.tvPetName.setText("Tên: "+pet.getName());
-        holder.tvPetType.setText("Loại: "+pet.getType());
+        holder.tvPetName.setText("Tên thú cưng: "+pet.getName());
+        holder.tvPetType.setText("Giống: "+pet.getType());
         holder.tvPetGender.setText("Giới tính: "+pet.getGender());
         Glide.with(holder.itemView.getContext())
                 .load(pet.getImage())
