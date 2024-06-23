@@ -104,8 +104,65 @@ public class PetFragment extends Fragment {
 
         binding.btnCreate.setOnClickListener(v -> startForResult.launch(new Intent(requireActivity(), AddPetActivity.class)));
 
+        binding.edtSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {
+                String newText = editable.toString();
+                if (newText.isEmpty()) {
+                    isLastItemReachedPet = false;
+                    isLoadingPet = false;
+                    lastVisiblePet = null;
+                    loadPets(false);
+                }
+            }
+        });
+
+        binding.imvSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String key = binding.edtSearch.getText().toString().trim();
+                if (key.isEmpty()) {
+                    return;
+                }
+                binding.imvSearch.setVisibility(View.INVISIBLE);
+                search(key);
+            }
+        });
     }
 
+    //Tìm kiếm thú cưng
+    private void search(String query) {
+        db.collection("pets")
+                .whereGreaterThanOrEqualTo("name", query.toLowerCase())
+                .whereLessThanOrEqualTo("name", query.toLowerCase() + "\uf8ff")
+                .whereEqualTo("userId", userInfo.getUid())
+                .orderBy("timeStamp", Query.Direction.ASCENDING)
+                .get()
+                .addOnCompleteListener(task -> {
+                    binding.imvSearch.setVisibility(View.VISIBLE);
+                    if (task.isSuccessful()) {
+                        List<Pet> list = new ArrayList<>();
+                        for (DocumentSnapshot documentSnapshot : Objects.requireNonNull(task.getResult())) {
+                            Pet model = documentSnapshot.toObject(Pet.class);
+                            if (model == null) {
+                                continue;
+                            }
+                            list.add(model);
+                        }
+                        petAdapter.setData(list);
+                    } else {
+                        Log.d("__index", "Error getting documents: ", task.getException());
+                    }
+                });
+    }
+
+    //Hiển thị thú cưng ra màn hình
     private void loadPets(boolean isLoadMore) {
 
         Query first;

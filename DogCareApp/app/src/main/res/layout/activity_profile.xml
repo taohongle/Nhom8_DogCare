@@ -145,7 +145,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_13"
                 android:layout_marginTop="@dimen/spacing_13"
-                android:text="Email của bạn"
+                android:text="Email"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

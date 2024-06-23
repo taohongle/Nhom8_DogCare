@@ -170,6 +170,4 @@
                 android:text="Không có sự kiện nào cho ngày hôm nay" />
         </LinearLayout>
     </LinearLayout>
-
-
 </androidx.core.widget.NestedScrollView>

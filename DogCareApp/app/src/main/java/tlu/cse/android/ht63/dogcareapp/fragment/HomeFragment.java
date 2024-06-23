@@ -308,7 +308,7 @@ public class HomeFragment extends Fragment {
     private BannerAdapter bannerAdapter;
     private Handler handler;
     private Runnable runnable;
-    private int[] images = {R.drawable.pet1, R.drawable.pet2, R.drawable.pet3};
+    private int[] images = {R.drawable.pet1, R.drawable.pet2, R.drawable.pet3,R.drawable.pet4};
     private int currentPage = 0;
 
 

@@ -27,9 +27,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:strokeColor="@color/main_color"
-        android:layout_marginTop="15dp"
         android:layout_marginStart="2dp"
         android:layout_marginEnd="2dp"
+        android:layout_marginTop="15dp"
+
         app:cardCornerRadius="20dp">
         <LinearLayout
             android:layout_width="match_parent"
@@ -87,6 +88,8 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="20dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
         android:background="#E3E3E3" />
 
     <TextView
