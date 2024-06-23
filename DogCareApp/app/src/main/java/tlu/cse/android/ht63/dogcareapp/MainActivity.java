@@ -58,8 +58,6 @@ public class MainActivity extends AppCompatActivity {
                     mHandle.postDelayed(() -> hideSplash(), 1500);
                     initViewPager();
                     initBottomBar();
-
-
                 }
                 @Override
                 public void onFailure(Exception e) {

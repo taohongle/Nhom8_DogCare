@@ -86,6 +86,12 @@ public class ProfileActivity extends BaseActivity {
         binding.tvGender.setOnClickListener(v -> showBottomSheetGenderChooser());
 
         binding.imgBack.setOnClickListener(v -> finish());
+        binding.edtEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ProfileActivity.this, "Không được chỉnh sửa email", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
