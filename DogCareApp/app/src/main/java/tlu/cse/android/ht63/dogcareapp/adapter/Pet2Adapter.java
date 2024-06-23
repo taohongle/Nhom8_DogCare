@@ -26,6 +26,7 @@ public class Pet2Adapter extends RecyclerView.Adapter<Pet2Adapter.VH> {
     private PetListener petListener;
 
     public void setPetListener(PetListener petListener) {
+
         this.petListener = petListener;
     }
 

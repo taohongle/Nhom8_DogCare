@@ -197,8 +197,6 @@ public class AddPetActivity extends BaseActivity {
             }
     );
 
-
-
     private void checkData() {
         String name = Objects.requireNonNull(binding.edtName.getText()).toString().trim();
         String gender = Objects.requireNonNull(binding.tvGender.getText()).toString().trim();
@@ -327,8 +325,6 @@ public class AddPetActivity extends BaseActivity {
         ).show());
     }
 
-
-
     private void showBottomSheetGenderChooser() {
         BottomSheetDialog dialog = new BottomSheetDialog(this);
         dialog.setContentView(R.layout.layout_bottom_gender);
@@ -348,7 +344,6 @@ public class AddPetActivity extends BaseActivity {
             binding.tvGender.setText("Con cái");
             dialog.dismiss();
         });
-
         Objects.requireNonNull(btnCancel).setOnClickListener(v -> dialog.dismiss());
     }
 }
