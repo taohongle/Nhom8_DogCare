@@ -38,8 +38,11 @@ import tlu.cse.android.ht63.dogcareapp.adapter.Pet2Adapter;
 import tlu.cse.android.ht63.dogcareapp.databinding.FragmentPetBinding;
 import tlu.cse.android.ht63.dogcareapp.model.Pet;
 import tlu.cse.android.ht63.dogcareapp.model.UserInfo;
+import tlu.cse.android.ht63.dogcareapp.ui.AddEventActivity;
 import tlu.cse.android.ht63.dogcareapp.ui.AddPetActivity;
+import tlu.cse.android.ht63.dogcareapp.ui.PetActivity;
 import tlu.cse.android.ht63.dogcareapp.utils.PaginationRecyclerview;
+import tlu.cse.android.ht63.dogcareapp.utils.PetListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -181,6 +184,21 @@ public class PetFragment extends Fragment {
             public boolean isLastPage() {
                 return isLastItemReachedPet;
             }
+
+        });
+
+        petAdapter.setPetListener(new PetListener() {
+            @Override
+            public void onClick(int p, Pet pet) {
+                Intent intent = new Intent(requireActivity(), PetActivity.class);
+                intent.putExtra("pet", gson.toJson(pet));
+                startForResult.launch(intent);
+            }
+
+            @Override
+            public void onLongClick(int p, Pet pet) {
+                showBottomSheetMenu(pet);
+            }
         });
     }
     @Override
@@ -189,6 +207,59 @@ public class PetFragment extends Fragment {
         loadPets(false);
     }
 
+    private void showBottomSheetMenu(Pet pet) {
+        BottomSheetDialog dialog = new BottomSheetDialog(requireActivity());
+        dialog.setContentView(R.layout.layout_pet_listener);
+        dialog.setCancelable(true);
+        dialog.show();
 
+        View btnPet = dialog.findViewById(R.id.tvPet);
+        View btnEvent = dialog.findViewById(R.id.tvEvent);
+        View btnDelete = dialog.findViewById(R.id.tvDelete);
+        View btnCancel = dialog.findViewById(R.id.cancel);
+
+        Objects.requireNonNull(btnPet).setOnClickListener(v -> {
+            dialog.dismiss();
+            Intent intent = new Intent(requireActivity(), AddPetActivity.class);
+            intent.putExtra("pet", gson.toJson(pet));
+            startForResult.launch(intent);
+        });
+
+        Objects.requireNonNull(btnEvent).setOnClickListener(v -> {
+            dialog.dismiss();
+            Intent intent = new Intent(requireActivity(), AddEventActivity.class);
+            intent.putExtra("pet", gson.toJson(pet));
+            startForResult.launch(intent);
+        });
+
+        Objects.requireNonNull(btnDelete).setOnClickListener(v -> {
+            dialog.dismiss();
+            showDeleteConfirmationDialog(pet);
+        });
+
+        Objects.requireNonNull(btnCancel).setOnClickListener(v -> dialog.dismiss());
+    }
+
+    private void showDeleteConfirmationDialog(Pet pet) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity());
+        builder.setTitle("Xác nhận xóa");
+        builder.setMessage("Bạn có chắc chắn muốn xóa mục này không?");
+
+        builder.setPositiveButton("Có", (dialog, which) -> {
+            db.collection("pets")
+                    .document(pet.getUid())
+                    .delete();
+            Toast.makeText(requireActivity(), "Đã xóa thành công", Toast.LENGTH_SHORT).show();
+
+            lastVisiblePet = null;
+            loadPets(false);
+
+        });
+        builder.setNegativeButton("Không", (dialog, which) -> dialog.dismiss());
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
 
 }

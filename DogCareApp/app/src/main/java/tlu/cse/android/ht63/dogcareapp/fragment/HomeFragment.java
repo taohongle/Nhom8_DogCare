@@ -38,6 +38,7 @@ public class HomeFragment extends Fragment {
 
     private UserInfo userInfo;
     private Calendar calendar = Calendar.getInstance();
+    private ActivityResultLauncher<Intent> startForResult;
 
 
     public static Fragment newInstance() {
@@ -60,12 +61,7 @@ public class HomeFragment extends Fragment {
         initBanner();
         loadUI();
 
-        binding.addPet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(requireActivity(),AddPetActivity.class));
-            }
-        });
+        binding.addPet.setOnClickListener(v -> startForResult.launch(new Intent(requireActivity(), AddPetActivity.class)));
     }
 
     private void loadUI() {
@@ -111,11 +107,16 @@ public class HomeFragment extends Fragment {
     private Runnable runnable;
     private int[] images = {R.drawable.pet1, R.drawable.pet2, R.drawable.pet3};
     private int currentPage = 0;
-    private ActivityResultLauncher<Intent> startForResult;
+
 
     @Override
     public void onDestroy() {
         handler.removeCallbacks(runnable);
         super.onDestroy();
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadUI();
     }
 }
