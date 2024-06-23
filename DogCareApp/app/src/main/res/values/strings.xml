@@ -7,10 +7,10 @@
     <string name="text_done">Xong</string>
     <string name="text_password_title">Mật khẩu</string>
     <string name="text_password_hint">***</string>
-    <string name="text_new_user_create_account"><font color="#6A6A6A">Bạn chưa có tài khoản?</font> <font color="#1A1D1E"> Tạo tài khoản</font></string>
+    <string name="text_new_user_create_account"><font color="#1A1D1E">Bạn chưa có tài khoản?</font> <font color="#F75564"> Tạo tài khoản</font></string>
     <string name="text_your_name">Tên của bạn</string>
     <string name="text_sign_up">Đăng ký</string>
-    <string name="text_already_have_account_log_in"><font color="#1A1D1E">Bạn đã có tài khoản?</font> <font color="#6A6A6A"> Đăng nhập</font></string>
+    <string name="text_already_have_account_log_in"><font color="#1A1D1E">Bạn đã có tài khoản?</font> <font color="#F75564">Đăng nhập</font></string>
     <string name="text_reset_password">Làm mới mật khẩu</string>
 
     <string name="days_ago">%d days ago</string>

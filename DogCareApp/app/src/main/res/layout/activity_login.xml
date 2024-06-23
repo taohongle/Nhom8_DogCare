@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:background="#A4FBC2C8"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.LoginActivity">
@@ -12,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingTop="30dp"
+        android:paddingTop="50dp"
+        android:paddingBottom="50dp"
         app:layout_constraintTop_toTopOf="parent">
         <ImageView
             android:layout_width="wrap_content"
@@ -20,19 +22,20 @@
             android:layout_gravity="center"
             android:layout_margin="15dp"
             android:src="@drawable/dog" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Đăng nhập"
-            android:textColor="@color/main_color"
-            android:textStyle="bold"
-            android:textSize="@dimen/_30sdp"
-            android:gravity="center"/>
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Đăng nhập"-->
+<!--            android:textColor="@color/main_color"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textSize="@dimen/_30sdp"-->
+<!--            android:gravity="center"/>-->
     </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@drawable/rounded_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/layout_of_header">
 
@@ -44,18 +47,29 @@
             android:layout_marginEnd="16dp"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Đăng nhập"
+                android:textColor="@color/main_color"
+                android:textStyle="bold"
+                android:textSize="@dimen/_25sdp"
+                android:gravity="center"/>
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    style="@style/TextLayoutBasicStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_title"
                     android:layout_marginStart="@dimen/spacing_13"
                     android:layout_marginTop="@dimen/spacing_13"
-                    android:text="Email của bạn"
+                    android:text="Email"
+                    android:textColor="@color/main_color"
+                    android:textStyle="bold"
+                    android:textSize="14dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -69,6 +83,7 @@
                     android:inputType="textEmailAddress"
                     android:background="@drawable/background_base_edittext"
                     style="@style/EditTextBaseStyle"
+                    android:textStyle="bold"
                     />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -77,13 +92,15 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    style="@style/TextLayoutBasicStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_title2"
                     android:layout_marginStart="@dimen/spacing_13"
                     android:layout_marginTop="@dimen/spacing_13"
                     android:text="@string/text_password_title"
+                    android:textColor="@color/main_color"
+                    android:textStyle="bold"
+                    android:textSize="14dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -104,6 +121,7 @@
                         style="@style/EditTextBaseStyle"
                         android:background="@drawable/background_base_edittext"
                         android:hint="@string/text_password_hint"
+                        android:textStyle="bold"
                         android:inputType="textPassword" />
                 </com.google.android.material.textfield.TextInputLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -119,7 +137,7 @@
                 android:text="@string/text_recovery_password"
                 android:textAlignment="textEnd"
                 android:textColor="@color/grey_1"
-                android:textSize="@dimen/text_size_10" />
+                android:textSize="@dimen/text_size_13" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/bt_login"
@@ -138,13 +156,13 @@
 
             <TextView
                 android:id="@+id/tv_register"
-                style="@style/TextLayoutBasicStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_13"
-                android:layout_marginTop="@dimen/spacing_60"
+                android:layout_marginTop="@dimen/spacing_50"
                 android:layout_marginEnd="@dimen/spacing_13"
                 android:text="@string/text_new_user_create_account"
+                android:textSize="14dp"
                 android:textAlignment="center" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

@@ -12,6 +12,8 @@
         android:id="@+id/layout_of_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
@@ -35,7 +37,7 @@
             android:text="Khoảnh khắc"
             android:textAlignment="center"
             android:textColor="@color/main_color"
-            android:textSize="@dimen/text_size_16"
+            android:textSize="@dimen/text_size_18"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -82,13 +84,31 @@
         android:minLines="4"
         android:padding="10dp" />
 
-    <ImageView
-        android:id="@+id/image"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/bg_default_image" />
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_default_image" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/upload" />
+    </RelativeLayout>
+
+<!--    <ImageView-->
+<!--        android:id="@+id/image"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="250dp"-->
+<!--        android:layout_marginStart="8dp"-->
+<!--        android:layout_marginEnd="8dp"-->
+<!--        android:background="@drawable/bg_default_image" />-->
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSave"

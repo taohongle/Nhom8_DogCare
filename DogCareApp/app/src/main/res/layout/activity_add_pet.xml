@@ -15,6 +15,8 @@
             android:id="@+id/layout_of_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
@@ -39,7 +41,7 @@
                 android:text="Thêm thú cưng"
                 android:textAlignment="center"
                 android:textColor="@color/main_color"
-                android:textSize="@dimen/text_size_16"
+                android:textSize="@dimen/text_size_18"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -120,7 +122,7 @@
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/edt_name"
-                style="@style/EditTextBaseStyle"
+                style="@style/TextInputEditTextBaseStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_10"
@@ -189,9 +191,7 @@
                 android:layout_marginTop="@dimen/spacing_10"
                 android:background="@drawable/background_base_edittext"
                 android:hint="xxxxxxxxxxx"
-
                 app:layout_constraintTop_toBottomOf="@id/tv_title_type"
-
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

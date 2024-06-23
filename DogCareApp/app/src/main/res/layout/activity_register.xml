@@ -30,11 +30,13 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
             android:text="Đăng ký"
             android:textColor="@color/main_color"
             android:textStyle="bold"
             android:textAlignment="center"
-            android:textSize="@dimen/_22sdp"
+            android:textSize="@dimen/_20sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -95,13 +97,15 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    style="@style/TextLayoutBasicStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_title3"
                     android:layout_marginStart="@dimen/spacing_13"
                     android:layout_marginTop="@dimen/spacing_13"
                     android:text="@string/text_your_name"
+                    android:textSize="14dp"
+                    android:textColor="@color/main_color"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -113,10 +117,9 @@
                     android:layout_marginTop="@dimen/spacing_10"
                     android:inputType="textEmailAddress"
                     android:hint="xxxxxxxxxxx"
+                    android:textStyle="bold"
                     android:background="@drawable/background_base_edittext"
-                    style="@style/EditTextBaseStyle"
-
-                    />
+                    style="@style/EditTextBaseStyle" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -124,12 +127,14 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    style="@style/TextLayoutBasicStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_title"
                     android:layout_marginStart="@dimen/spacing_13"
                     android:layout_marginTop="@dimen/spacing_13"
+                    android:textSize="14dp"
+                    android:textColor="@color/main_color"
+                    android:textStyle="bold"
                     android:text="Email của bạn"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -140,6 +145,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/spacing_10"
                     android:hint="xyz@gmail.com"
+                    android:textStyle="bold"
                     android:id="@+id/edt_email"
                     android:inputType="textEmailAddress"
                     android:background="@drawable/background_base_edittext"
@@ -152,12 +158,14 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    style="@style/TextLayoutBasicStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_title2"
                     android:layout_marginStart="@dimen/spacing_13"
                     android:layout_marginTop="@dimen/spacing_13"
+                    android:textSize="14dp"
+                    android:textColor="@color/main_color"
+                    android:textStyle="bold"
                     android:text="@string/text_password_title"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -179,6 +187,7 @@
                         style="@style/EditTextBaseStyle"
                         android:background="@drawable/background_base_edittext"
                         android:hint="@string/text_password_hint"
+                        android:textStyle="bold"
                         android:inputType="textPassword" />
                 </com.google.android.material.textfield.TextInputLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -197,14 +206,14 @@
 
             <TextView
                 android:id="@+id/tv_go_back_login"
-                style="@style/TextLayoutBasicStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_13"
                 android:layout_marginBottom="@dimen/spacing_20"
-                android:layout_marginTop="@dimen/spacing_60"
+                android:layout_marginTop="@dimen/spacing_50"
                 android:layout_marginEnd="@dimen/spacing_13"
                 android:text="@string/text_already_have_account_log_in"
+                android:textSize="14dp"
                 android:textAlignment="center" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

@@ -51,7 +51,7 @@
         <!--        <item name="android:paddingBottom">@dimen/spacing_5</item>-->
         <item name="android:layout_marginStart">@dimen/spacing_13</item>
         <item name="android:layout_marginEnd">@dimen/spacing_13</item>
-        <item name="android:textSize">@dimen/text_size_12</item>
+        <item name="android:textSize">@dimen/text_size_14</item>
         <item name="android:textColor">@drawable/button_text_color_selector_main</item>
     </style>
 
@@ -107,7 +107,7 @@
     <style name="EditTextBaseStyle" parent="Widget.AppCompat.EditText">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="fontFamily">@font/poppin_medium</item>
+        <item name="fontFamily">@font/poppins_regular</item>
         <item name="android:textSize">@dimen/text_size_12</item>
         <item name="android:layout_marginStart">@dimen/spacing_13</item>
         <item name="android:layout_marginEnd">@dimen/spacing_13</item>

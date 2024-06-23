@@ -13,10 +13,10 @@
         style="@style/TextLayoutBasicStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:padding="15dp"
         android:text="Thú cưng"
         android:textAlignment="center"
-        android:textSize="16sp"
+        android:textSize="18sp"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -238,6 +238,7 @@ public class AddPetActivity extends BaseActivity {
                                     }
                                     if (task.isSuccessful()) {
                                         Uri uri = task.getResult();
+                                        Toast.makeText(this, "Thêm thành công", Toast.LENGTH_SHORT).show();
                                         pushToFirebase(name, gender, type, age, kg, uri.toString(), uid);
                                     } else {
                                         hideLoading();
