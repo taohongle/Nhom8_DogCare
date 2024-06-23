@@ -160,7 +160,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_10"
                 android:background="@drawable/bg_base_text"
-                android:text="Con Đực"
+                android:text="Con đực"
                 app:layout_constraintTop_toBottomOf="@id/tv_title_gender"
 
                 />

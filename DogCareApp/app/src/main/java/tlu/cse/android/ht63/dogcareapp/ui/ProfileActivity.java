@@ -92,9 +92,7 @@ public class ProfileActivity extends BaseActivity {
                 Toast.makeText(ProfileActivity.this, "Không được chỉnh sửa email", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
-
     @SuppressLint("SetTextI18n")
     private void showBottomSheetGenderChooser() {
         BottomSheetDialog dialog = new BottomSheetDialog(this);
