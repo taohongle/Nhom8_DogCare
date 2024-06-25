@@ -86,12 +86,7 @@ public class ProfileActivity extends BaseActivity {
         binding.tvGender.setOnClickListener(v -> showBottomSheetGenderChooser());
 
         binding.imgBack.setOnClickListener(v -> finish());
-        binding.edtEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(ProfileActivity.this, "Không được chỉnh sửa email", Toast.LENGTH_SHORT).show();
-            }
-        });
+        binding.edtEmail.setOnClickListener(v -> Toast.makeText(ProfileActivity.this, "Không được chỉnh sửa email", Toast.LENGTH_SHORT).show());
     }
     @SuppressLint("SetTextI18n")
     private void showBottomSheetGenderChooser() {
@@ -142,7 +137,6 @@ public class ProfileActivity extends BaseActivity {
         ).show());
     }
 
-
     private void saveData() {
         userInfo.setName(Objects.requireNonNull(binding.edtName.getText()).toString().trim());
         userInfo.setAddress(Objects.requireNonNull(binding.edtAddress.getText()).toString().trim());
@@ -158,7 +152,7 @@ public class ProfileActivity extends BaseActivity {
                     hideLoading();
                     if (task.isSuccessful()) {
                         UserInfoManager.getInstance().setUserInfo(userInfo);
-                        Toast.makeText(this, "Cập nhật thông tin cá nhân thành công", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
                         finish();
                     } else {
                         Toast.makeText(ProfileActivity.this, "Đã có lỗi xảy ra", Toast.LENGTH_SHORT).show();
