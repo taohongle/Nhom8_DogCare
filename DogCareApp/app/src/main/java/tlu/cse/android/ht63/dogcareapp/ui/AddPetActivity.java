@@ -264,7 +264,6 @@ public class AddPetActivity extends BaseActivity {
     }
 
     private void pushToFirebase(String name, String gender, String type, String age, String kg, String url, String userId) {
-
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference docRef;
         if (pet == null) {
