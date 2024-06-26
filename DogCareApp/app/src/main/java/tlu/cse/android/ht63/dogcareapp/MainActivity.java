@@ -31,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private ActivityMainBinding binding;
     private final Handler mHandle = new Handler(Looper.getMainLooper());
-
     private TabAdapter adapterRv;
     private PagerAdapter pagerAdapter;
 
@@ -80,8 +79,6 @@ public class MainActivity extends AppCompatActivity {
         binding.viewPager.setSaveEnabled(false);
         binding.viewPager.setAdapter(pagerAdapter);
     }
-
-
     private void hideSplash() {
         binding.splashLayout.setVisibility(View.GONE);
         binding.containerLayout.setVisibility(View.VISIBLE);
