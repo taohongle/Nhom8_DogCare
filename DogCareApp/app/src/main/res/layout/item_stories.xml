@@ -19,8 +19,10 @@
             <TextView
                 android:id="@+id/tvDateTime"
                 style="@style/TextLayoutBasicStyle"
+                android:textColor="#6A6A6A"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="12dp"
                 android:padding="10dp" />
 
             <ImageView

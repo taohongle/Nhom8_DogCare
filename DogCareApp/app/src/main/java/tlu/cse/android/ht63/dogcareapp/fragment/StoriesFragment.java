@@ -98,7 +98,6 @@ public class StoriesFragment extends Fragment {
                         if (key.equals("stories")) {
                             loadStories(false);
                         }
-
                     }
                 }
         );
@@ -189,7 +188,7 @@ public class StoriesFragment extends Fragment {
         Query first;
         first = db.collection("stories")
                 .whereEqualTo("userId", userInfo.getUid())
-                .orderBy("timeStamp", Query.Direction.ASCENDING);
+                .orderBy("timeStamp", Query.Direction.DESCENDING);
 
         if (isLoadMore && lastVisible != null) {
             first = first.startAfter(lastVisible);
@@ -251,9 +250,7 @@ public class StoriesFragment extends Fragment {
 
         });
 
-
         builder.setNegativeButton("Không", (dialog, which) -> dialog.dismiss());
-
 
         AlertDialog dialog = builder.create();
         dialog.show();
